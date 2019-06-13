@@ -57,9 +57,6 @@ class DoublyLinkedList:
             self.head = new_node
             self.length += 1
 
-
-  def add_to_tail(self, value):
-    pass
     def remove_from_head(self):
         removed_head = self.head.value
         if self.length == 1:
@@ -75,6 +72,18 @@ class DoublyLinkedList:
 
   def remove_from_tail(self):
     pass
+    def add_to_tail(self, value):
+
+        if not self.length:
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
+            self.length = 1
+        else:
+            self.tail.insert_after(value)
+            new_node = self.tail.next
+            self.tail = new_node
+            self.length += 1
 
   def move_to_front(self, node):
     pass
