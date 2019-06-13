@@ -34,11 +34,28 @@ class ListNode:
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
+
+
 class DoublyLinkedList:
-  def __init__(self, node=None):
-    self.head = node
-    self.tail = node
-    self.length = 1 if node is not None else 0
+    def __init__(self, node=None):
+        self.head = node
+        self.tail = node
+        self.length = 1 if node is not None else 0
+
+    def __len__(self):
+        return self.length
+
+    def add_to_head(self, value):
+        if not self.length:
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
+            self.length = 1
+        else:
+            self.head.insert_before(value)
+            new_node = self.head.prev
+            self.head = new_node
+            self.length += 1
 
   def __len__(self):
     return self.length
